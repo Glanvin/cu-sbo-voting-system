@@ -1,0 +1,75 @@
+USE db_voting_system;
+
+-- ========================================================
+-- 1. INSERT ELECTIONS
+-- ========================================================
+INSERT INTO elections (`name`, `department`, `open_at`, `close_at`, `is_closed`, `firstname`, `lastname`) VALUES
+('SBO Supreme Student Council Election 2026', 'College of Computer Studies', '2026-08-01 08:00:00', '2026-08-05 17:00:00', 1, 'Admin', 'Officer'),
+('Engineering Student Council Election 2026', 'College of Engineering', '2026-08-10 08:00:00', '2026-08-15 17:00:00', 0, 'Admin', 'Officer');
+
+-- ========================================================
+-- 2. INSERT USERS (1 Moderator + 18 Student Voters)
+-- ========================================================
+INSERT INTO users (`school_id`, `firstname`, `lastname`, `email`, `password`, `role`, `is_online`, `session_id`, `last_activity`, `department`) VALUES
+('MOD-001', 'System', 'Moderator', 'moderator@university.edu.ph', 'mod123', 'moderator', 0, NULL, NULL, 'Student Affairs'),
+('2024-0001', 'Juan', 'Dela Cruz', 'juan.delacruz@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0002', 'Maria', 'Santos', 'maria.santos@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0003', 'Mark', 'Reyes', 'mark.reyes@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0004', 'Anna', 'Garcia', 'anna.garcia@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0005', 'John', 'Ramos', 'john.ramos@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0006', 'Grace', 'Mendoza', 'grace.mendoza@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0007', 'Paul', 'Flores', 'paul.flores@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0008', 'Sarah', 'Bautista', 'sarah.bautista@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0009', 'David', 'Gonzales', 'david.gonzales@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0010', 'Lisa', 'Villanueva', 'lisa.villanueva@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0011', 'Kevin', 'Castro', 'kevin.castro@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0012', 'Elena', 'Aquino', 'elena.aquino@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0013', 'James', 'Navarro', 'james.navarro@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0014', 'Rachel', 'Torres', 'rachel.torres@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0015', 'Christian', 'Lim', 'christian.lim@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0016', 'Patricia', 'Cruz', 'patricia.cruz@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0017', 'Daniel', 'Perez', 'daniel.perez@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies'),
+('2024-0018', 'Chloe', 'Sanchez', 'chloe.sanchez@student.edu.ph', 'pass123', 'student', 0, NULL, NULL, 'College of Computer Studies');
+
+-- ========================================================
+-- 3. INSERT CANDIDATES (16 Records)
+-- ========================================================
+INSERT INTO candidates (`election_id`, `fullname`, `position`, `bio`, `school_id`, `email`, `contact_number`) VALUES
+(1, 'Carlos Yulo', 'President', 'Empowering student voices through technology and action.', '2022-0101', 'carlos.yulo@candidate.edu.ph', '09171234567'),
+(1, 'Alex Eala', 'President', 'Building a transparent and inclusive student government.', '2022-0102', 'alex.eala@candidate.edu.ph', '09171234568'),
+(1, 'Hidilyn Diaz', 'Vice President', 'Strong leadership dedicated to service and discipline.', '2022-0103', 'hidilyn.diaz@candidate.edu.ph', '09171234569'),
+(1, 'EJ Obiena', 'Vice President', 'Reaching new heights together for student welfare.', '2022-0104', 'ej.obiena@candidate.edu.ph', '09171234570'),
+(1, 'Alyssa Valdez', 'Secretary', 'Organized, efficient, and reliable communication for all.', '2023-0201', 'alyssa.valdez@candidate.edu.ph', '09181234561'),
+(1, 'Mika Reyes', 'Secretary', 'Ensuring accurate records and open communication lines.', '2023-0202', 'mika.reyes@candidate.edu.ph', '09181234562'),
+(1, 'June Mar Fajardo', 'Treasurer', 'Accountable financial management and transparent budgets.', '2023-0203', 'junemar.fajardo@candidate.edu.ph', '09181234563'),
+(1, 'Scottie Thompson', 'Treasurer', 'Maximizing resources to fund impactful student projects.', '2023-0204', 'scottie.thompson@candidate.edu.ph', '09181234564'),
+(1, 'Dwight Ramos', 'Auditor', 'Checking balance sheets and ensuring financial integrity.', '2024-0301', 'dwight.ramos@candidate.edu.ph', '09191234565'),
+(1, 'Kai Sotto', 'Auditor', 'Overlooking budgets with precision and dedication.', '2024-0302', 'kai.sotto@candidate.edu.ph', '09191234566'),
+(1, 'Catriona Gray', 'PIO', 'Spreading student awareness with excellence and passion.', '2024-0303', 'catriona.gray@candidate.edu.ph', '09191234567'),
+(1, 'Pia Wurtzbach', 'PIO', 'Connecting students to updates with speed and accuracy.', '2024-0304', 'pia.wurtzbach@candidate.edu.ph', '09191234568'),
+(2, 'Gretchen Ho', 'President', 'Leadership with sportsmanship and drive.', '2022-0501', 'gretchen.ho@candidate.edu.ph', '09201234561'),
+(2, 'Kiefer Ravena', 'President', 'Leading the engineering department to victory.', '2022-0502', 'kiefer.ravena@candidate.edu.ph', '09201234562'),
+(2, 'Jodi Sta Maria', 'Vice President', 'Serving students with empathy and determination.', '2023-0503', 'jodi.stamaria@candidate.edu.ph', '09201234563'),
+(2, 'Anne Ojeda', 'Vice President', 'Advocating for student welfare and academic balance.', '2023-0504', 'anne.ojeda@candidate.edu.ph', '09201234564');
+
+-- ========================================================
+-- 4. INSERT VOTER SUBMISSIONS (16 Records)
+-- Uses dynamic subqueries to match voter_id by school_id
+-- ========================================================
+INSERT INTO voter_submissions (`election_id`, `voter_id`, `submitted_at`) VALUES
+(1, (SELECT id FROM users WHERE school_id = '2024-0001'), '2026-08-01 09:15:00'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0002'), '2026-08-01 10:30:12'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0003'), '2026-08-01 11:45:22'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0004'), '2026-08-01 14:05:10'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0005'), '2026-08-02 08:20:45'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0006'), '2026-08-02 09:50:30'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0007'), '2026-08-02 12:10:00'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0008'), '2026-08-02 15:33:18'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0009'), '2026-08-03 08:05:00'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0010'), '2026-08-03 10:12:44'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0011'), '2026-08-03 13:25:50'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0012'), '2026-08-03 16:40:11'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0013'), '2026-08-04 09:00:20'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0014'), '2026-08-04 11:15:33'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0015'), '2026-08-04 14:50:00'),
+(1, (SELECT id FROM users WHERE school_id = '2024-0016'), '2026-08-05 16:02:10');
