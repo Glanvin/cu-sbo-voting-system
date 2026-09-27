@@ -1,0 +1,11 @@
+# CI3 writes generated files into these two directories at runtime. Each keeps a tracked
+# index.html placeholder so a web server cannot serve a listing of the directory.
+/application/cache/*
+!/application/cache/index.html
+/application/logs/*
+!/application/logs/index.html
+
+# Local overrides and the Composer vendor directory. The framework itself is committed
+# under system/, so this project does not need `composer install` to run.
+/.env
+/vendor/

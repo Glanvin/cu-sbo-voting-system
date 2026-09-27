@@ -1,0 +1,36 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /cu-sbo-voting-system/
+
+	# Nothing is served out of these. Every request goes through index.php, so a URL that
+	# names either of them is not one this app generates.
+	RewriteRule ^(application|system)(/|$) - [R=404,L]
+
+	# If the request maps to an existing file or directory, serve it directly.
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^(.*)$ index.php/$1 [L]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+	# Without mod_rewrite the clean routes cannot resolve, so fall back to index.php URLs.
+	ErrorDocument 404 /cu-sbo-voting-system/index.php
+</IfModule>
+
+<IfModule mod_headers.c>
+	# The app ships its own assets and embeds no third-party media, so a strict policy is free.
+	Header always set X-Content-Type-Options "nosniff"
+	Header always set X-Frame-Options "SAMEORIGIN"
+	Header always set Referrer-Policy "same-origin"
+</IfModule>
+
+# Never serve dotfiles, which includes .env and .git.
+RedirectMatch 404 /\.(?!well-known)
+
+# The writable CI3 directories are never served directly.
+<IfModule mod_authz_core.c>
+	Options -Indexes
+	<FilesMatch "\.(sql|md|ini|log)$">
+		Require all denied
+	</FilesMatch>
+</IfModule>
